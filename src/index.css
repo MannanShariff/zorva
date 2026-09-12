@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Surfaces ─────────────────────────────── */
+  --color-surface: #faf8ff;
+  --color-surface-dim: #d2d9f4;
+  --color-surface-bright: #faf8ff;
+  --color-surface-variant: #dae2fd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container: #eaedff;
+  --color-surface-container-high: #e2e7ff;
+  --color-surface-container-highest: #dae2fd;
+
+  /* ── Content ──────────────────────────────── */
+  --color-on-surface: #131b2e;
+  --color-on-surface-variant: #484455;
+  --color-outline: #797487;
+  --color-outline-variant: #cac3d8;
+
+  /* ── Primary (violet) ─────────────────────── */
+  --color-primary: #4100b6;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #5925dc;
+  --color-on-primary-container: #ccbeff;
+  --color-primary-fixed: #e7deff;
+  --color-on-primary-fixed: #1e0060;
+  --color-primary-fixed-dim: #ccbeff;
+  --color-on-primary-fixed-variant: #4c06d0;
+
+  /* ── Secondary (emerald — trust/verified) ── */
+  --color-secondary: #006c4a;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #82f5c1;
+  --color-on-secondary-container: #00714e;
+  --color-secondary-fixed: #85f8c4;
+  --color-on-secondary-fixed: #002114;
+  --color-on-secondary-fixed-variant: #005137;
+
+  /* ── Tertiary (amber — urgency/surge) ─────── */
+  --color-tertiary: #672a00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #8b3b00;
+  --color-on-tertiary-container: #ffb791;
+  --color-tertiary-fixed: #ffdbca;
+  --color-on-tertiary-fixed: #341100;
+  --color-tertiary-fixed-dim: #ffb690;
+  --color-on-tertiary-fixed-variant: #783200;
+
+  /* ── Error ────────────────────────────────── */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* ── Inverse ──────────────────────────────── */
+  --color-inverse-surface: #283044;
+  --color-inverse-on-surface: #eef0ff;
+  --color-surface-tint: #6537e8;
+
+  /* ── Typography ───────────────────────────── */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --text-headline-xl: 2.25rem;
+  --text-headline-xl--line-height: 2.75rem;
+  --text-headline-xl--font-weight: 700;
+  --text-headline-xl-mobile: 1.75rem;
+  --text-headline-xl-mobile--line-height: 2.25rem;
+  --text-headline-xl-mobile--font-weight: 700;
+  --text-headline-lg: 1.75rem;
+  --text-headline-lg--line-height: 2.25rem;
+  --text-headline-lg--font-weight: 600;
+  --text-headline-lg-mobile: 1.375rem;
+  --text-headline-lg-mobile--line-height: 1.875rem;
+  --text-headline-lg-mobile--font-weight: 600;
+  --text-headline-md: 1.25rem;
+  --text-headline-md--line-height: 1.75rem;
+  --text-headline-md--font-weight: 600;
+  --text-headline-sm: 1.125rem;
+  --text-headline-sm--line-height: 1.625rem;
+  --text-headline-sm--font-weight: 600;
+  --text-body-lg: 1rem;
+  --text-body-lg--line-height: 1.5rem;
+  --text-body-md: 0.875rem;
+  --text-body-md--line-height: 1.25rem;
+  --text-body-sm: 0.75rem;
+  --text-body-sm--line-height: 1.125rem;
+  --text-label-lg: 0.875rem;
+  --text-label-lg--line-height: 1.25rem;
+  --text-label-lg--font-weight: 600;
+  --text-label-md: 0.75rem;
+  --text-label-md--line-height: 1rem;
+  --text-label-md--font-weight: 500;
+  --text-label-sm: 0.625rem;
+  --text-label-sm--line-height: 0.875rem;
+  --text-label-sm--font-weight: 600;
+
+  /* ── Elevation ────────────────────────────── */
+  --shadow-e1: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(89, 37, 220, 0.03);
+  --shadow-e2: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 10px 24px -3px rgba(15, 23, 42, 0.08);
+  --shadow-e3: 0 20px 32px -4px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
+}
+
+/* ── Base ─────────────────────────────────────── */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #e6e4f2;
+  font-family: var(--font-sans);
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+
+/* ── Device frame (mobile-first, centered on desktop) ── */
+.app-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 430px;
+  height: 100dvh;
+  margin-inline: auto;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+@media (min-width: 500px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-frame {
+    height: min(94dvh, 920px);
+    border-radius: 40px;
+    border: 1px solid var(--color-outline-variant);
+    box-shadow:
+      0 40px 90px -20px rgba(65, 0, 182, 0.35),
+      0 12px 28px -8px rgba(15, 23, 42, 0.18);
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Font-family helpers (headline/body = Plus Jakarta Sans, label = Inter).
+   The font-weight itself comes from the --text-* tokens above. */
+.font-headline-xl,
+.font-headline-xl-mobile,
+.font-headline-lg,
+.font-headline-lg-mobile,
+.font-headline-md,
+.font-headline-sm,
+.font-body-lg,
+.font-body-md,
+.font-body-sm {
+  font-family: var(--font-sans);
+}
+.font-label-lg,
+.font-label-md,
+.font-label-sm {
+  font-family: var(--font-label);
+}
+
+/* ── Animations ───────────────────────────────── */
+@keyframes zorva-pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: zorva-pulse-ring 1.8s ease-out infinite;
+}
+
+@keyframes zorva-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: zorva-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes zorva-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: zorva-spin-slow 40s linear infinite;
+}
+
+@keyframes zorva-dash-move {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.route-dash {
+  animation: zorva-dash-move 1.4s linear infinite;
+}
+
+@keyframes zorva-wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.wave-bar {
+  animation: zorva-wave 0.9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes zorva-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--color-surface-container-low) 40%,
+    var(--color-surface-container-high) 50%,
+    var(--color-surface-container-low) 60%
+  );
+  background-size: 200% 100%;
+  animation: zorva-shimmer 1.6s linear infinite;
+}
+
+/* Press feedback for touch targets */
+.tap {
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.tap:active {
+  transform: scale(0.97);
+}
